@@ -1,8 +1,13 @@
-# CineverseGPT
+# 🎬 CineverseGPT
 
-This is a web app developed using React & Firebase which shows you information about movies. It also makes use of OpenAI APIs for suggesting movies based on your prompt.
+This web app developed using React & Firebase shows you information about movies. It also uses OpenAI APIs to suggest movies based on your prompt.
 
-## Steps:
+- Movie streaming react app built using TMDB APIs with Firebase auth & Redux
+- Deployed trendy OpenAI API for crisp movie picks & multi-language support
+- Performant search featuring live autosuggestions with memoized debouncing
+- Tailwind Dark mode & responsive UI
+
+## Learning, Features & Steps:
 
 - CRA
 - TailwindCSS
