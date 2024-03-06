@@ -1,14 +1,16 @@
-import openai from "../utils/openai";
+// import openai from "../utils/openai";
 import { useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import lang from "../utils/languageConstants";
 import { API_OPTIONS } from "../utils/constants";
 import { addGptMovieResult } from "../utils/gptSlice";
+import OpenAI from "openai";
 
 const GptSearchBar = () => {
   const dispatch = useDispatch();
   const langKey = useSelector((store) => store.config.lang);
   const searchText = useRef(null);
+  const gptKeyText = useRef(null);
 
   // search movie in TMDB
   const searchMovieTMDB = async (movie) => {
@@ -26,6 +28,14 @@ const GptSearchBar = () => {
   const handleGptSearchClick = async () => {
     console.log(searchText.current.value);
     // Make an API call to GPT API and get Movie Results
+
+    if (!gptKeyText.current.value) alert("GPT Key Required");
+    console.log(gptKeyText.current.value);
+
+    const openai = new OpenAI({
+      apiKey: gptKeyText.current.value,
+      dangerouslyAllowBrowser: true,
+    });
 
     const gptQuery =
       "Act as a Movie Recommendation system and suggest some movies for the query : " +
@@ -63,16 +73,22 @@ const GptSearchBar = () => {
   };
 
   return (
-    <div className="pt-[10%] flex justify-center">
+    <div className="pt-[35%] md:pt-[10%] flex justify-center">
       <form
-        className=" w-1/2 bg-black grid grid-cols-12"
+        className="w-full md:w-1/2 bg-black grid grid-cols-12"
         onSubmit={(e) => e.preventDefault()}
       >
         <input
           ref={searchText}
           type="text"
-          className=" p-4 m-4 col-span-9"
+          className=" p-4 m-4 col-span-6"
           placeholder={lang[langKey].gptSearchPlaceholder}
+        />
+        <input
+          ref={gptKeyText}
+          type="text"
+          className=" p-4 m-4 col-span-3"
+          placeholder="Enter GPT Key"
         />
         <button
           className="col-span-3 m-4 py-2 px-4 bg-red-700 text-white rounded-lg"
