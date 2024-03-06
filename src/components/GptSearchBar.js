@@ -29,9 +29,11 @@ const GptSearchBar = () => {
     //console.log(searchText.current.value);
     // Make an API call to GPT API and get Movie Results
 
-    if (!gptKeyText.current.value) alert("GPT Key Required");
+    if (!gptKeyText.current.value) {
+      alert("GPT Key Required");
+      return null;
+    }
     //console.log(gptKeyText.current.value);
-
     const openai = new OpenAI({
       apiKey: gptKeyText.current.value,
       dangerouslyAllowBrowser: true,
@@ -75,23 +77,23 @@ const GptSearchBar = () => {
   return (
     <div className="pt-[35%] md:pt-[10%] flex justify-center">
       <form
-        className="w-full md:w-1/2 bg-black grid grid-cols-12"
+        className="w-full md:w-2/3 bg-gray-800 grid grid-cols-12 rounded-lg"
         onSubmit={(e) => e.preventDefault()}
       >
         <input
           ref={searchText}
           type="text"
-          className=" p-4 m-4 col-span-6"
+          className="p-4 my-4 ml-2 col-span-7 font-extralight text-xs rounded-lg"
           placeholder={lang[langKey].gptSearchPlaceholder}
         />
         <input
           ref={gptKeyText}
           type="text"
-          className=" p-4 m-4 col-span-3"
-          placeholder="Enter GPT Key"
+          className="p-4 my-4 mx-2 col-span-3 font-extralight text-xs rounded-lg"
+          placeholder="GPT Key"
         />
         <button
-          className="col-span-3 m-4 py-2 px-4 bg-red-700 text-white rounded-lg"
+          className="col-span-2 my-4 mr-2 py-2 px-2 bg-red-700 text-white rounded-lg text-sm"
           onClick={handleGptSearchClick}
         >
           {lang[langKey].search}

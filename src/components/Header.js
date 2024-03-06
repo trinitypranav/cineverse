@@ -67,7 +67,7 @@ const Header = () => {
         {showGptSearch && (
           <>
             <select
-              className="p-2 m-2 bg-gray-900 text-white"
+              className=" py-2 m-2 text-black dark:bg-black dark:text-white"
               onChange={handleLanguageChange}
             >
               {SUPPORTED_LANGUAGES.map((lang) => (
@@ -81,7 +81,7 @@ const Header = () => {
         {user && (
           <>
             <button
-              className="py-2 px-4 mx-4 my-2 bg-purple-800 text-white rounded-lg"
+              className="py-2 px-4 mr-4 my-2 bg-orange-400 text-white rounded-lg"
               onClick={handleGptSearchClick}
             >
               {showGptSearch ? "Homepage" : "GPT Search"}
@@ -94,10 +94,10 @@ const Header = () => {
               {/* {showGptSearch ? "Homepage" : "GPT Search"} */}
             </button>
             <button
-              className="text-black dark:text-white"
+              className="text-black dark:text-white mx-4 text-lg"
               onClick={() => navigate("/cart")}
             >
-              Cart {cartSize} items
+              <span className="text-3xl">🛒</span> {cartSize} items
             </button>
           </>
         )}
@@ -111,7 +111,7 @@ const Header = () => {
             /> */}
             <button
               onClick={handleSignOut}
-              className="font-bold text-black dark:text-white border rounded-lg p-2"
+              className="px-4 mx-4 bg-orange-400 text-white rounded-lg p-2"
             >
               Sign Out
             </button>

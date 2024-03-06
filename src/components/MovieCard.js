@@ -39,15 +39,16 @@ const MovieCard = ({ movieId, posterPath }) => {
   // });
 
   return (
-    <div className="w-36 md:w-48 pr-4 cursor-pointer">
+    <div className="w-36 md:w-48 pr-4 cursor-pointer rounded-3xl">
       <img
         alt="Movie Card"
         src={IMG_CDN_URL + posterPath}
         onClick={handleCardClick}
+        className="rounded-t-lg"
       />
       {!isAdded && (
         <button
-          className="p-4 w-full bg-green-600"
+          className="p-4 w-full bg-green-600 hover:bg-green-800"
           onClick={() => {
             dispatch(
               addItem(allMovies.filter((movie) => movie.id === movieId)[0])

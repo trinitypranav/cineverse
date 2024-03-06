@@ -29,7 +29,7 @@ const Cart = () => {
       customerEmail: user.email,
       billingAddressCollection: "required",
       shippingAddressCollection: {
-        allowedCountries: ["US", "CA"],
+        allowedCountries: ["US", "CA", "IN"],
       },
     });
     console.warn(error.message);
@@ -59,17 +59,13 @@ const Cart = () => {
           cartItems.map((item) => <CartItem key={item.id} {...item} />)}
       </div>
       <div className="text-3xl mt-10 ">
-        Bill Details
-        <h2 className="text-orange-400">
-          Total - Rs.{" "}
-          {cartItems.reduce((acc, item) => acc + item.popularity, 0)}
-          <span
-            onClick={handleCheckout}
-            className="text-base font-normal bg-green-600 p-4 rounded-lg ml-4 text-white"
-          >
-            Pay Now
-          </span>
-        </h2>
+        Billing
+        <span
+          onClick={handleCheckout}
+          className="text-base font-normal bg-green-600 p-4 rounded-lg ml-4 text-white"
+        >
+          Subscribe for Rs.10/month
+        </span>
       </div>
     </div>
   );

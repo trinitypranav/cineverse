@@ -41,18 +41,20 @@ const MovieList = ({ title, movies }) => {
   return (
     <div className="px-6">
       <div className="flex">
-        <h1 className="text-lg md:text-3xl py-4 text-white">{title}</h1>
+        <h1 className="text-lg md:text-2xl py-4 text-black dark:text-white">
+          {title}
+        </h1>
         <input
           value={searchText}
           type="text"
           onChange={(e) => setSearchText(e.target.value)}
-          className="p-4 m-4 col-span-3"
-          placeholder="Suggestions"
+          className="px-4 m-4 col-span-3 bg-blue-100 rounded-lg"
+          placeholder="Search"
         />
       </div>
 
       <div className="flex overflow-x-scroll">
-        <div className="flex">
+        <div className="flex mb-10">
           {movies?.map((movie) => (
             <MovieCard
               key={movie.id}
