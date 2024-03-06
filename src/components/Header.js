@@ -18,7 +18,7 @@ const Header = () => {
   const isDarkModeOn = useSelector((state) => state.dark.dark);
 
   const handleSignOut = () => {
-    console.log("sign out called");
+    // console.log("sign out called");
     signOut(auth)
       .then(() => {
         navigate("/");

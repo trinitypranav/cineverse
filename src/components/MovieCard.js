@@ -30,7 +30,7 @@ const MovieCard = ({ movieId, posterPath }) => {
   };
 
   const handleCardClick = () => {
-    console.log("movie id is " + movieId);
+    // console.log("movie id is " + movieId);
     getMovieVideos(movieId);
   };
 

@@ -7,11 +7,11 @@ const darkSlice = createSlice({
   },
   reducers: {
     toggle: function (state) {
-      console.log("called asadn");
+      // console.log("called toggle");
       state.dark = !state.dark;
     },
     setDark: function (state, action) {
-      console.log("called asadn");
+      // console.log("called setDark");
       state.dark = action.payload;
     },
   },

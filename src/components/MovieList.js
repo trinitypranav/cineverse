@@ -30,7 +30,7 @@ const MovieList = ({ title, movies }) => {
         movie.original_title.includes(searchText) ||
         movie.title.includes(searchText)
     );
-    console.log(json.results);
+    // console.log(json.results);
     dispatch(methodMapping[title](json.results));
   };
 

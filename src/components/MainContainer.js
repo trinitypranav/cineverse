@@ -10,8 +10,8 @@ const MainContainer = () => {
 
   let mainMovie = trailerVideoId
     ? allMovies.filter((m) => {
-        console.log(m.id);
-        console.log(trailerVideoId);
+        // console.log(m.id);
+        // console.log(trailerVideoId);
         return m.id === trailerVideoId;
       })[0]
     : allMovies[0];
