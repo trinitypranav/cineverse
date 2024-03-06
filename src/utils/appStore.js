@@ -5,6 +5,7 @@ import gptReducer from "./gptSlice";
 import configReducer from "./configSlice";
 import darkSlice from "./darkSlice";
 import cart from "./cartSlice";
+import searchCache from "./searchCacheSlice";
 
 const appStore = configureStore({
   reducer: {
@@ -14,6 +15,7 @@ const appStore = configureStore({
     config: configReducer,
     dark: darkSlice,
     cart: cart,
+    searchCache: searchCache,
   },
 });
 
