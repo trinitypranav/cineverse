@@ -22,6 +22,7 @@ const CartItem = (props) => {
           {" "}
           Release Date {release_date}
         </div>
+        <h3>Rs. {popularity}</h3>
         <button
           className="bg-orange-400 p-2 rounded-lg font-normal text-base"
           onClick={() => {

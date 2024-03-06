@@ -53,7 +53,7 @@ const MovieCard = ({ movieId, posterPath }) => {
             dispatch(
               addItem(allMovies.filter((movie) => movie.id === movieId)[0])
             );
-            alert("Movie added to cart");
+            //("Movie added to cart");
             setIsAdded(true);
           }}
         >
