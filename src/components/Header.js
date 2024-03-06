@@ -7,15 +7,22 @@ import { auth } from "../utils/firebase";
 import { addUser, removeUser } from "../utils/userSlice";
 import { toggleGptSearchView } from "../utils/gptSlice";
 import { changeLanguage } from "../utils/configSlice";
+import { toggle } from "../utils/darkSlice";
 
 const Header = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const user = useSelector((store) => store.user);
+  const cartSize = useSelector((store) => store.cart.items.length);
   const showGptSearch = useSelector((store) => store.gpt.showGptSearch);
+  const isDarkModeOn = useSelector((state) => state.dark.dark);
+
   const handleSignOut = () => {
+    console.log("sign out called");
     signOut(auth)
-      .then(() => {})
+      .then(() => {
+        navigate("/");
+      })
       .catch((error) => {
         navigate("/error");
       });
@@ -54,9 +61,9 @@ const Header = () => {
   };
 
   return (
-    <div className="absolute w-screen px-8 py-2 bg-gradient-to-b from-black z-10 flex justify-between">
-      <img className="w-44" src={LOGO} alt="logo" />
-      <div className="flex">
+    <div className="absolute w-screen px-8 py-2 bg-white dark:bg-black z-10 flex flex-col md:flex-row justify-between">
+      <img className="w-44 mx-auto md:mx-0" src={LOGO} alt="logo" />
+      <div className="flex p-2 justify-between">
         {showGptSearch && (
           <>
             <select
@@ -72,18 +79,41 @@ const Header = () => {
           </>
         )}
         {user && (
-          <button
-            className="py-2 px-4 mx-4 my-2 bg-purple-800 text-white rounded-lg"
-            onClick={handleGptSearchClick}
-          >
-            {showGptSearch ? "Homepage" : "GPT Search"}
-          </button>
+          <>
+            <button
+              className="py-2 px-4 mx-4 my-2 bg-purple-800 text-white rounded-lg"
+              onClick={handleGptSearchClick}
+            >
+              {showGptSearch ? "Homepage" : "GPT Search"}
+            </button>
+            <button
+              className="mx-4 my-2 text-3xl"
+              onClick={() => dispatch(toggle())}
+            >
+              {isDarkModeOn ? "🌚" : "🌞"}
+              {/* {showGptSearch ? "Homepage" : "GPT Search"} */}
+            </button>
+            <button
+              className="text-black dark:text-white"
+              onClick={() => navigate("/cart")}
+            >
+              Cart {cartSize} items
+            </button>
+          </>
         )}
+
         {user && (
           <div className="flex p-2">
-            <img className="w-12 h-12" alt="usericon" src={user?.photoURL} />
-            <button onClick={handleSignOut} className="font-bold text-white ">
-              (Sign Out)
+            {/* <img
+              className="hidden md:block w-12 h-12"
+              alt="usericon"
+              src={user?.photoURL}
+            /> */}
+            <button
+              onClick={handleSignOut}
+              className="font-bold text-black dark:text-white border rounded-lg p-2"
+            >
+              Sign Out
             </button>
           </div>
         )}
