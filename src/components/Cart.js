@@ -19,12 +19,14 @@ const Cart = () => {
   // console.log("store contains" + items);
 
   async function handleCheckout() {
+    // console.log(totalBill.current);
+    // console.log(typeof totalBill.current);
     const response = await fetch(
       "https://expresspj.onrender.com/api/eatvilla/make-payment",
       {
         method: "POST",
         body: JSON.stringify({
-          amount: totalBill.current,
+          amount: Math.round(totalBill.current),
         }),
         headers: {
           "Content-type": "application/json; charset=UTF-8",
