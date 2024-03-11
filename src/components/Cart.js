@@ -2,9 +2,7 @@ import React, { useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { clearCart } from "../utils/cartSlice";
 import CartItem from "./CartItem";
-import Header from "./Header";
 import { useNavigate } from "react-router-dom";
-import getStripe from "../lib/getStripe";
 import StripeCheckout from "react-stripe-checkout";
 
 const Cart = () => {
